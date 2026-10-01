@@ -999,6 +999,11 @@ section {
   border-bottom: 1px solid rgba(255, 255, 255, .08);
 }
 
+#problem > div {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 #problem .s-label {
   background: rgba(255, 255, 255, .08);
   color: var(--mint)
@@ -1014,9 +1019,10 @@ section {
 
 .problem-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 40px
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 40px auto 0;
+  max-width: 440px;
 }
 
 .prob-card {
@@ -1358,6 +1364,40 @@ section {
 .trust-card:active {
   transform: scale(.97);
   box-shadow: var(--sh-md)
+}
+
+.choices-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+@media screen and (max-width: 900px) {
+  .choices-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .choices-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+.choice-subcard {
+  background: rgba(255, 255, 255, .6);
+  border-radius: var(--r-md);
+  padding: 16px 12px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, .8);
+  box-shadow: 0 4px 12px rgba(11, 31, 58, .04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform var(--ease), box-shadow var(--ease);
 }
 
 .tc-icon {
@@ -1731,7 +1771,7 @@ footer {
 ════════════════════════════════════════════════════════════ */
 
 @media screen and (min-width: 768px) {
-  .problem-grid { grid-template-columns: repeat(2, 1fr); }
+  .problem-grid { grid-template-columns: repeat(3, 1fr); max-width: 960px; margin: 48px auto 0; gap: 20px; }
   .trust-grid { grid-template-columns: repeat(3, 1fr); }
   .footer-cols { grid-template-columns: repeat(2, 1fr); }
 }
@@ -1766,7 +1806,7 @@ footer {
   .spline-card { max-width: 900px; margin: 80px auto 0; padding: 40px; }
 
   /* Problem */
-  .problem-grid { grid-template-columns: repeat(4, 1fr); max-width: 1200px; margin: 60px auto 0; gap: 24px; }
+  .problem-grid { grid-template-columns: repeat(3, 1fr); max-width: 1100px; margin: 60px auto 0; gap: 28px; }
   .prob-card { padding: 40px 32px; }
 
   /* How it Works (Timeline) -> Horizontal Zig-Zag or Row */
