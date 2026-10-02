@@ -1,0 +1,397 @@
+/**
+ * CarryO Care — Journey & Route Animation Styles
+ * Extracted from Lovable project for standalone/static HTML use.
+ */
+
+:root,
+.map-scene {
+  /* Hex fallbacks for maximum compatibility */
+  --brand-navy: #1c2d37;
+  --brand-teal: #1f6866;
+  --brand-mint: #bce5dc;
+  --brand-cream: #faf8f5;
+  --ink-soft: #475b66;
+  --paper-light: #fcfbf8;
+  --background: #faf8f5;
+  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* Exact OKLCH color definitions from the Lovable design system */
+@supports (color: oklch(0 0 0)) {
+  :root,
+  .map-scene {
+    --brand-navy: oklch(0.26 0.043 230);
+    --brand-teal: oklch(0.43 0.09 185);
+    --brand-mint: oklch(0.89 0.068 167);
+    --brand-cream: oklch(0.974 0.016 95);
+    --ink-soft: oklch(0.41 0.035 226);
+    --paper-light: oklch(0.989 0.01 96);
+    --background: oklch(0.974 0.016 95);
+  }
+}
+
+/* Map Scene Container */
+.map-scene {
+  position: relative;
+  width: 100%;
+  margin: 24px auto 0;
+  overflow: hidden;
+  background: var(--brand-mint);
+  border: 1px solid color-mix(in oklab, var(--brand-teal) 14%, transparent);
+  border-radius: var(--r-lg, 24px);
+  box-shadow: var(--glass-shadow, 0 18px 45px rgba(11, 31, 58, .12));
+  box-sizing: border-box;
+  font-family: var(--font-sans);
+}
+
+.map-scene::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklab, var(--brand-mint) 90%, transparent),
+    transparent 15%,
+    transparent 85%,
+    color-mix(in oklab, var(--brand-mint) 87%, transparent)
+  );
+}
+
+/* Top Caption */
+.map-caption {
+  position: absolute;
+  z-index: 2;
+  left: 25px;
+  top: 19px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--brand-navy);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  user-select: none;
+}
+
+.map-caption-dot {
+  height: 6px;
+  width: 6px;
+  background: var(--brand-teal);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Journey SVG Canvas */
+.journey-map {
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-height: 358px;
+}
+
+/* Background Pattern & Contour Lines */
+.map-dot {
+  fill: color-mix(in oklab, var(--brand-teal) 25%, transparent);
+}
+
+.contour-line {
+  stroke: color-mix(in oklab, var(--paper-light) 75%, transparent);
+  stroke-width: 1.5;
+  fill: none;
+}
+
+/* Route Path Styles & Keyframe Animations */
+.route-underlay {
+  stroke: color-mix(in oklab, var(--paper-light) 78%, transparent);
+  stroke-width: 10;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.route-stroke {
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.route-outward {
+  stroke: var(--brand-teal);
+  stroke-dasharray: 7 9;
+  animation: draw-route 1.2s ease-out both;
+}
+
+.route-return {
+  stroke: var(--brand-navy);
+  stroke-dasharray: 4 9;
+  animation: draw-route 1.3s 0.4s ease-out both;
+}
+
+/* Home and Hospital Markers */
+.map-home,
+.map-hospital {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: marker-appear 600ms 500ms both;
+}
+
+.map-hospital {
+  animation-delay: 1.2s;
+}
+
+.home-halo {
+  fill: color-mix(in oklab, var(--brand-teal) 12%, transparent);
+}
+
+.home-marker {
+  fill: var(--brand-teal);
+}
+
+.home-icon {
+  fill: var(--background);
+}
+
+.hospital-halo {
+  fill: color-mix(in oklab, var(--brand-navy) 11%, transparent);
+}
+
+.hospital-marker {
+  fill: var(--brand-navy);
+}
+
+.hospital-icon {
+  stroke: var(--background);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.map-label-bg {
+  fill: var(--background);
+  stroke: color-mix(in oklab, var(--brand-teal) 22%, transparent);
+  stroke-width: 1;
+}
+
+.map-label {
+  fill: var(--brand-navy);
+  font: 600 9px var(--font-sans);
+  letter-spacing: 1.2px;
+}
+
+.map-label-small {
+  font-size: 7px;
+  letter-spacing: 1px;
+}
+
+/* Arrival Care Elements */
+.care-circle {
+  fill: var(--background);
+  stroke: var(--brand-teal);
+  stroke-width: 1.5;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: care-pop 550ms 2.2s both;
+}
+
+.care-circle-two {
+  animation-delay: 2.45s;
+}
+
+.care-plus {
+  stroke: var(--brand-teal);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: care-pop 550ms 2.2s both;
+}
+
+.care-spark {
+  stroke: var(--brand-teal);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 4;
+  fill: none;
+  animation: draw-route 600ms 2.45s both;
+}
+
+/* Vehicle Styling */
+.vehicle-body {
+  fill: var(--brand-navy);
+  stroke: var(--background);
+  stroke-width: 1;
+}
+
+.vehicle-windows {
+  fill: var(--brand-mint);
+}
+
+.vehicle-wheel {
+  fill: var(--brand-navy);
+  stroke: var(--background);
+  stroke-width: 1;
+}
+
+.vehicle-cross {
+  stroke: var(--background);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+
+/* Companion Waypoint Marker */
+.companion-icon {
+  fill: var(--brand-teal);
+  stroke: var(--brand-teal);
+  stroke-width: 1.5;
+}
+
+.companion-halo {
+  fill: color-mix(in oklab, var(--brand-teal) 11%, transparent);
+  stroke: var(--brand-teal);
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+}
+
+.map-label-tag {
+  stroke-dasharray: 3 3;
+}
+
+/* Legend */
+.map-legend {
+  position: absolute;
+  z-index: 2;
+  bottom: 14px;
+  left: 23px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 17px;
+  color: var(--ink-soft);
+  font-size: 9px;
+  user-select: none;
+}
+
+.map-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-dot {
+  width: 6px;
+  height: 6px;
+  display: inline-block;
+  border-radius: 50%;
+  background: var(--brand-teal);
+}
+
+.legend-home {
+  background: var(--brand-teal);
+}
+
+.legend-care {
+  background: var(--brand-navy);
+}
+
+.legend-return {
+  border: 1px solid var(--brand-navy);
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.map-index {
+  display: none;
+}
+
+/* Keyframe Animations */
+@keyframes draw-route {
+  from {
+    stroke-dashoffset: 270;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes marker-appear {
+  from {
+    opacity: 0;
+    scale: 0.78;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes care-pop {
+  from {
+    opacity: 0;
+    scale: 0.7;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+/* Responsive Overrides */
+@media (max-width: 900px) {
+  .journey-map {
+    max-height: 385px;
+  }
+}
+
+@media (max-width: 640px) {
+  .map-scene {
+    margin-top: 9px;
+    min-height: 245px;
+  }
+  .map-scene::after {
+    background: linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--brand-mint) 65%, transparent),
+      transparent 14%,
+      transparent 86%,
+      color-mix(in oklab, var(--brand-mint) 60%, transparent)
+    );
+  }
+  .map-caption {
+    top: 12px;
+    left: 13px;
+    font-size: 8px;
+  }
+  .journey-map {
+    width: 100%;
+    height: 230px;
+    min-height: 230px;
+    max-height: 250px;
+    transform: scale(1.29);
+    transform-origin: center;
+  }
+  .map-legend {
+    bottom: 8px;
+    left: 10px;
+    gap: 9px;
+    font-size: 7px;
+  }
+  .map-legend span {
+    gap: 4px;
+  }
+  .legend-dot {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+/* Accessibility: Respect Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  .map-scene *,
+  .map-scene *::before,
+  .map-scene *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .moving-vehicle animateMotion {
+    display: none;
+  }
+}

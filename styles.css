@@ -1219,6 +1219,16 @@ section {
   background: transparent
 }
 
+.services-journey {
+  width: 100%;
+  max-width: 880px;
+  margin: 32px auto 0;
+}
+
+.services-journey .map-scene {
+  margin-top: 0;
+}
+
 .services-scroll {
   display: flex;
   gap: 14px;
@@ -1226,7 +1236,7 @@ section {
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  margin: 36px -20px 0;
+  margin: 24px -20px 0;
   padding: 8px 20px 20px;
 }
 
@@ -1235,16 +1245,18 @@ section {
 }
 
 .svc-card {
-  flex: 0 0 260px;
+  flex: 0 0 250px;
   scroll-snap-align: start;
   background: rgba(255, 255, 255, .36);
   border: 1px solid rgba(255, 255, 255, .42);
-  border-radius: var(--r-lg);
-  padding: 28px 24px;
+  border-radius: var(--r-md);
+  padding: 20px 18px 18px;
   position: relative;
   overflow: hidden;
   box-shadow: var(--glass-shadow);
   backdrop-filter: var(--glass-blur);
+  display: flex;
+  flex-direction: column;
   transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease);
   /* Tilt on touch — handled by JS */
 }
@@ -1273,35 +1285,37 @@ section {
 }
 
 .svc-icon {
-  font-size: 2rem;
+  font-size: 1.65rem;
   display: block;
-  margin-bottom: 18px;
+  margin-bottom: 10px;
   filter: drop-shadow(0 4px 8px rgba(14, 124, 106, .25))
 }
 
 .svc-card h3 {
-  font-size: .95rem;
+  font-size: .92rem;
   font-weight: 700;
   color: var(--navy);
-  margin-bottom: 10px
+  margin-bottom: 6px
 }
 
 .svc-card p {
-  font-size: .83rem;
+  font-size: .81rem;
   color: var(--g600);
-  line-height: 1.68
+  line-height: 1.5;
+  margin-bottom: 10px;
 }
 
 .svc-tag {
   display: inline-block;
-  margin-top: 16px;
-  font-size: .7rem;
+  align-self: flex-start;
+  margin-top: auto;
+  font-size: .68rem;
   font-weight: 700;
   letter-spacing: .5px;
   color: var(--teal);
   background: var(--teal-bg);
   border-radius: 50px;
-  padding: 4px 12px;
+  padding: 3px 10px;
 }
 
 .scroll-hint {
@@ -1825,12 +1839,15 @@ footer {
   .tl-card { min-height: 200px; padding: 32px 24px; }
 
   /* Services Grid */
+  .services-journey {
+    margin: 32px auto 0;
+  }
   .services-scroll { 
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
-    max-width: 1200px; margin: 60px auto 0; overflow: visible; padding: 0; 
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    max-width: 1200px; margin: 32px auto 0; overflow: visible; padding: 0; 
   }
   .scroll-hint, .scroll-dots { display: none !important; }
-  .svc-card { flex: auto; padding: 40px 32px; }
+  .svc-card { flex: auto; padding: 22px 20px 20px; }
 
   /* Choices Splide */
   #choices-splide { max-width: 1200px; margin: 0 auto 80px !important; padding: 0 !important; }
