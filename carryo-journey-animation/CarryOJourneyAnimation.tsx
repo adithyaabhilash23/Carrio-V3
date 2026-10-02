@@ -120,7 +120,7 @@ export function CarryOJourneyAnimation({
         <g className="map-hospital">
           <circle cx="628" cy="199" r="35" className="hospital-halo" />
           <circle cx="628" cy="199" r="23" className="hospital-marker" />
-          <path d="M628 187v24m-12-12h24" className="hospital-icon" />
+          <path d="M618 190h5v-3h10v3h5v20h-7v-6h-6v6h-7Zm8.5 2h3v2.5h2.5v3h-2.5v2.5h-3v-2.5h-2.5v-3h2.5Z" fillRule="evenodd" className="hospital-icon" />
           <rect
             x="576"
             y="246"
@@ -134,20 +134,6 @@ export function CarryOJourneyAnimation({
           </text>
         </g>
 
-        {/* Arrival Care Badges & Sparkles */}
-        <g className="arrival-care">
-          <circle cx="565" cy="148" r="14" className="care-circle" />
-          <path d="M560 148h10m-5-5v10" className="care-plus" />
-          <circle
-            cx="684"
-            cy="234"
-            r="14"
-            className="care-circle care-circle-two"
-          />
-          <path d="M679 234h10m-5-5v10" className="care-plus" />
-          <path d="M660 134c7-9 16-10 24-8" className="care-spark" />
-          <path d="M577 280c-6 9-16 12-24 10" className="care-spark" />
-        </g>
 
         {/* Moving Vehicle with Bidirectional Journey & Upright Orientation */}
         <g className="moving-vehicle" aria-hidden="true">
@@ -190,16 +176,16 @@ export function CarryOJourneyAnimation({
 
         {/* Companion Waypoint Marker */}
         <g className="companion-marker">
-          <circle cx="379" cy="274" r="19" className="companion-halo" />
-          <circle cx="379" cy="269" r="5" className="companion-icon" />
+          <circle cx="379" cy="221" r="19" className="companion-halo" />
+          <circle cx="379" cy="216" r="5" className="companion-icon" />
           <path
-            d="M369 285c1-7 5-10 10-10s9 3 10 10"
+            d="M369 232c1-7 5-10 10-10s9 3 10 10"
             className="companion-icon"
           />
         </g>
         <rect
           x="330"
-          y="312"
+          y="250"
           width="98"
           height="25"
           rx="12.5"
@@ -207,7 +193,7 @@ export function CarryOJourneyAnimation({
         />
         <text
           x="379"
-          y="329"
+          y="267"
           textAnchor="middle"
           className="map-label map-label-small"
         >

@@ -161,9 +161,7 @@
 }
 
 .hospital-icon {
-  stroke: var(--background);
-  stroke-width: 2.2;
-  stroke-linecap: round;
+  fill: var(--background);
 }
 
 .map-label-bg {
